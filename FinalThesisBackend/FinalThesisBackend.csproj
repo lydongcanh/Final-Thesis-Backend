@@ -16,5 +16,7 @@
     <Folder Include="Core\" />
     <Folder Include="Infrastructure\" />
     <Folder Include="Core\Entities\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Core\Interfaces\" />
   </ItemGroup>
 </Project>
