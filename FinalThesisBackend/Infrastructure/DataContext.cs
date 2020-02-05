@@ -8,11 +8,7 @@ namespace FinalThesisBackend.Infrastructure
     {
         public DbSet<Category> Categories { get; protected set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            string connectionString = @"Server=localhost,1433;Database=FinalThesisDB;User Id=SA;Password=Thehulk1";
-            optionsBuilder.UseSqlServer(connectionString);
-        }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

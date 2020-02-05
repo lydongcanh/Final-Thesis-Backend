@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using FinalThesisBackend.Infrastructure;
 
 namespace FinalThesisBackend
 {
@@ -34,6 +37,9 @@ namespace FinalThesisBackend
                        .AllowAnyMethod()
                        .AllowCredentials();
             }));
+
+            services.AddDbContext<DataContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("LDCMacDockerConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
