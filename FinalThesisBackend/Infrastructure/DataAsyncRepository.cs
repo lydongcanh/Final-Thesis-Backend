@@ -8,15 +8,15 @@ using FinalThesisBackend.Core.Interfaces;
 
 namespace FinalThesisBackend.Infrastructure
 {
-    public class DataAsyncRepository<T, U>: IAsyncRepository<T, U> where T : BaseEntity where U : DbSet<T>
+    public class DataAsyncRepository<T>: IAsyncRepository<T> where T : BaseEntity
     {
         private readonly DataContext DataContext;
-        private readonly U Entities;
-        
-        public DataAsyncRepository(DataContext dataContext, U entities)
+
+        private DbSet<T> Entities => DataContext.Set<T>();
+
+        public DataAsyncRepository(DataContext dataContext)
         {
             DataContext = dataContext;
-            Entities = entities;
         }
 
         public virtual async Task<T> SelectByIdAsync (string id)

@@ -6,7 +6,7 @@ using FinalThesisBackend.Core.Entities;
 
 namespace FinalThesisBackend.Core.Interfaces
 {
-    public interface IAsyncRepository<T, U> where T: BaseEntity where U: DbSet<T>
+    public interface IAsyncRepository<T> where T: BaseEntity
     {
         /// <summary>
         /// Select an entity by its id.
