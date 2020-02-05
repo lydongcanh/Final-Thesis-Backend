@@ -9,7 +9,7 @@ using FinalThesisBackend.Core.Interfaces;
 namespace FinalThesisBackend.Controllers
 {
     [Route("api/[controller]")]
-    public class CategoriesController : Controller
+    public class CategoriesController : ControllerBase
     {
         private readonly IAsyncRepository<Category> Repository;
 
@@ -20,16 +20,32 @@ namespace FinalThesisBackend.Controllers
 
         // GET: api/categories
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(
+            [FromQuery]string name = null,
+            [FromQuery]bool? isRoot = null,
+            [FromQuery]bool? isLeaf = null)
         {
-            return Ok(await Repository.SelectAllAsync());
+            if (name == null && isRoot == null && isLeaf == null)
+                return Ok(await Repository.SelectAllAsync());
+
+            return Ok(await Repository.SelectAsync(category =>
+            {
+                return (name == null || category.Name == name) &&
+                       (isRoot == null || category.IsRoot == isRoot.Value) &&
+                       (isLeaf == null || category.IsLeaf == isLeaf.Value);
+            }));
         }
 
         // GET api/categories/id
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            return Ok(await Repository.SelectByIdAsync(id));
+            var category = await Repository.SelectByIdAsync(id);
+
+            if (category == default(Category))
+                return NotFound();
+
+            return Ok(category);
         }
 
         // POST api/categories
