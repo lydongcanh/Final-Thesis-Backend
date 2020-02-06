@@ -38,8 +38,7 @@ namespace FinalThesisBackend
             {
                 builder.AllowAnyOrigin()
                        .AllowAnyHeader()
-                       .AllowAnyMethod()
-                       .AllowCredentials();
+                       .AllowAnyMethod();
             }));
 
             services.AddDbContext<DataContext>(options =>
@@ -61,6 +60,8 @@ namespace FinalThesisBackend
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("DevPolicy");
 
             app.UseEndpoints(endpoints =>
             {
