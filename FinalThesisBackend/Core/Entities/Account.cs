@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace FinalThesisBackend.Core.Entities
 {
@@ -13,7 +14,9 @@ namespace FinalThesisBackend.Core.Entities
 
         public string Username { get; set; }
         public string Password { get; set; }
-        public Type AccountType { get; set; }
         public bool IsActive { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Type AccountType { get; set; }
     }
 }
