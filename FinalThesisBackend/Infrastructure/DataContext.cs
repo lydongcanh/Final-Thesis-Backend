@@ -9,6 +9,7 @@ namespace FinalThesisBackend.Infrastructure
     {
         public DbSet<Category> Categories { get; protected set; }
         public DbSet<Account> Accounts { get; protected set; }
+        public DbSet<Employee> Employees { get; protected set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
@@ -16,6 +17,7 @@ namespace FinalThesisBackend.Infrastructure
         {
             ConfigureCategory(modelBuilder.Entity<Category>());
             CongifureAccount(modelBuilder.Entity<Account>());
+            ConfigureEmployee(modelBuilder.Entity<Employee>());
         }
 
         protected virtual void ConfigureCategory(EntityTypeBuilder<Category> builder)
@@ -33,6 +35,16 @@ namespace FinalThesisBackend.Infrastructure
             builder.Property(a => a.Username).HasMaxLength(100).IsRequired();
             builder.Property(a => a.Password).HasMaxLength(100).IsRequired();
             builder.Property(a => a.AccountType).HasMaxLength(20).IsRequired();
+        }
+
+        protected virtual void ConfigureEmployee(EntityTypeBuilder<Employee> builder)
+        {
+            builder.Property(e => e.FirstName).HasMaxLength(50).IsRequired();
+            builder.Property(e => e.LastName).HasMaxLength(50).IsRequired();
+            builder.Property(e => e.Birthdate).IsRequired();
+            builder.Property(e => e.Hiredate).IsRequired();
+            builder.Property(e => e.Address).HasMaxLength(100).IsRequired();
+            builder.Property(e => e.Gender).HasMaxLength(20).IsRequired();
         }
     }
 }
