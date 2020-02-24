@@ -45,6 +45,8 @@ namespace FinalThesisBackend.Infrastructure
             builder.Property(e => e.Hiredate).IsRequired();
             builder.Property(e => e.Address).HasMaxLength(100).IsRequired();
             builder.Property(e => e.Gender).HasMaxLength(20).IsRequired();
+            builder.Property(e => e.JobTitle).HasMaxLength(50).IsRequired();
+            builder.HasOne(e => e.Account).WithOne().HasForeignKey<Employee>(e => e.AccountId);
         }
     }
 }
