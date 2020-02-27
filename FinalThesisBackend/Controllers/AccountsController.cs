@@ -22,6 +22,7 @@ namespace FinalThesisBackend.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(
             [FromQuery]string username,
+            [FromQuery]string password,
             [FromQuery]Account.Type? type,
             [FromQuery]bool? isActive)
         {
@@ -31,6 +32,7 @@ namespace FinalThesisBackend.Controllers
             return Ok(await Accounts.SelectAsync(a =>
             {
                 return (username == null || a.Username == username) &&
+                       (password == null || a.Password == password) &&
                        (type == null || a.AccountType == type) &&
                        (isActive == null || a.IsActive == isActive);
             }));
