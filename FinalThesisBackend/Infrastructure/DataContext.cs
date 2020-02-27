@@ -39,10 +39,8 @@ namespace FinalThesisBackend.Infrastructure
 
         protected virtual void ConfigureEmployee(EntityTypeBuilder<Employee> builder)
         {
-            builder.Property(e => e.FirstName).HasMaxLength(50).IsRequired();
-            builder.Property(e => e.LastName).HasMaxLength(50).IsRequired();
+            builder.Property(e => e.Name).HasMaxLength(100).IsRequired();
             builder.Property(e => e.Birthdate).IsRequired();
-            builder.Property(e => e.Hiredate).IsRequired();
             builder.Property(e => e.Address).HasMaxLength(100).IsRequired();
             builder.Property(e => e.Gender).HasMaxLength(20).IsRequired();
             builder.Property(e => e.JobTitle).HasMaxLength(50).IsRequired();

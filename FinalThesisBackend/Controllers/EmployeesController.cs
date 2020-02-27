@@ -21,25 +21,25 @@ namespace FinalThesisBackend.Controllers
         // GET: api/employees
         [HttpGet]
         public async Task<IActionResult> Get(
-            [FromQuery]string firstName = null,
-            [FromQuery]string lastName = null,
-            [FromQuery]DateTime? birthdate = null,
-            [FromQuery]DateTime? hiredate = null,
+            [FromQuery]string containsName = null,
+            [FromQuery]string containsEmail = null,
+            [FromQuery]string jobTitle = null,
             [FromQuery]string address = null,
-            [FromQuery]string phoneNumber = null)
+            [FromQuery]string containsPhoneNumber = null,
+            [FromQuery]DateTime? birthdate = null)
         {
-            if (firstName == null && lastName == null && birthdate == null &&
-                hiredate == null && address == null && phoneNumber == null)
+            if (containsName == null && containsEmail == null && jobTitle == null &&
+                address == null && containsPhoneNumber == null && birthdate == null)
                 return Ok(await Employees.SelectAllAsync());
 
             return Ok(await Employees.SelectAsync(e =>
             {
-                return (firstName == null || e.FirstName.Contains(firstName)) &&
-                       (lastName == null || e.LastName.Contains(lastName)) &&
-                       (!birthdate.HasValue || e.Birthdate.Date == birthdate.Value.Date) &&
-                       (!hiredate.HasValue || e.Hiredate.Date == hiredate.Value.Date) &&
+                return (containsName == null || e.Name.Contains(containsName)) &&
+                       (containsEmail == null || e.Email.Contains(containsEmail)) &&
+                       (jobTitle == null || e.JobTitle == jobTitle) &&
                        (address == null || e.Address.Contains(address)) &&
-                       (phoneNumber == null || e.PhoneNumber.Contains(phoneNumber));
+                       (containsPhoneNumber == null || e.PhoneNumber.Contains(containsPhoneNumber)) &&
+                       (!birthdate.HasValue || e.Birthdate.Date == birthdate.Value.Date);
             }));
         }
 
