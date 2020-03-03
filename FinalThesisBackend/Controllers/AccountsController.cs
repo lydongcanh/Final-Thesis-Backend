@@ -23,7 +23,7 @@ namespace FinalThesisBackend.Controllers
         public async Task<IActionResult> Get(
             [FromQuery]string username,
             [FromQuery]string password,
-            [FromQuery]Account.Type? type,
+            [FromQuery]string type,
             [FromQuery]bool? isActive)
         {
             if (username == null && type == null && isActive == null)
