@@ -12,6 +12,7 @@ namespace FinalThesisBackend.Infrastructure
         public DbSet<Account> Accounts { get; protected set; }
         public DbSet<Employee> Employees { get; protected set; }
         public DbSet<Customer> Customers { get; protected set; }
+        public DbSet<Product> Products { get; protected set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
@@ -21,6 +22,7 @@ namespace FinalThesisBackend.Infrastructure
             Configure(new AccountConfiguration(), modelBuilder.Entity<Account>());
             Configure(new EmployeeConfiguration(), modelBuilder.Entity<Employee>());
             Configure(new CustomerConfiguration(), modelBuilder.Entity<Customer>());
+            Configure(new ProductConfiguration(), modelBuilder.Entity<Product>());
         }
 
         protected void Configure<T>(IConfiguration<T> configuration, EntityTypeBuilder<T> builder) where T: BaseEntity
