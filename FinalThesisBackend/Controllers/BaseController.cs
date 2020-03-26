@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FinalThesisBackend.Core.Entities;
 using FinalThesisBackend.Core.Interfaces;
@@ -40,6 +41,7 @@ namespace FinalThesisBackend.Controllers
         [HttpPost]
         public virtual async Task<IActionResult> Post([FromBody]T entity)
         {
+            entity.Id = Guid.NewGuid().ToString();
             return Ok(await Repository.AddAsync(entity));
         }
 
