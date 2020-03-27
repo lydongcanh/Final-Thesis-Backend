@@ -20,7 +20,7 @@
     "FinalThesisBackend": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/categories",
+      "launchUrl": "api/accounts",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

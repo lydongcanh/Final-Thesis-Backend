@@ -10,6 +10,6 @@
         public string[] SubImages { get; set; }
 
         public string CategoryId { get; set; }
-        public Category Category { get; set; }
+        public ProductCategory Category { get; set; }
     }
 }

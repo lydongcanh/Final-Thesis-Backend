@@ -9,9 +9,9 @@ using FinalThesisBackend.Core.Interfaces;
 namespace FinalThesisBackend.Controllers
 {
     [Route("api/[controller]")]
-    public class CategoriesController : BaseController<Category>
+    public class ProductCategoriesController : BaseController<ProductCategory>
     {
-        public CategoriesController(IAsyncRepository<Category> repository) : base(repository) { }
+        public ProductCategoriesController(IAsyncRepository<ProductCategory> repository) : base(repository) { }
 
         /// <summary>
         /// GET: api/categories

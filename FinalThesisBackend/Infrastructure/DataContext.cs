@@ -8,7 +8,7 @@ namespace FinalThesisBackend.Infrastructure
 {
     public class DataContext: DbContext
     {
-        public DbSet<Category> Categories { get; protected set; }
+        public DbSet<ProductCategory> Categories { get; protected set; }
         public DbSet<Account> Accounts { get; protected set; }
         public DbSet<Employee> Employees { get; protected set; }
         public DbSet<Customer> Customers { get; protected set; }
@@ -18,7 +18,7 @@ namespace FinalThesisBackend.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Configure(new CategoryConfiguration(), modelBuilder.Entity<Category>());
+            Configure(new ProductCategoryConfiguration(), modelBuilder.Entity<ProductCategory>());
             Configure(new AccountConfiguration(), modelBuilder.Entity<Account>());
             Configure(new EmployeeConfiguration(), modelBuilder.Entity<Employee>());
             Configure(new CustomerConfiguration(), modelBuilder.Entity<Customer>());
