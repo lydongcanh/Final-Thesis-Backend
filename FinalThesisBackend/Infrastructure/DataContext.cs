@@ -8,11 +8,12 @@ namespace FinalThesisBackend.Infrastructure
 {
     public class DataContext: DbContext
     {
-        public DbSet<ProductCategory> Categories { get; protected set; }
-        public DbSet<Account> Accounts { get; protected set; }
-        public DbSet<Employee> Employees { get; protected set; }
-        public DbSet<Customer> Customers { get; protected set; }
-        public DbSet<Product> Products { get; protected set; }
+        public DbSet<ProductCategory> Categories { get; private set; }
+        public DbSet<Account> Accounts { get; private set; }
+        public DbSet<Employee> Employees { get; private set; }
+        public DbSet<Customer> Customers { get; private set; }
+        public DbSet<Product> Products { get; private set; }
+        public DbSet<ProductDetails> ProductDetails { get; private set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
@@ -23,9 +24,10 @@ namespace FinalThesisBackend.Infrastructure
             Configure(new EmployeeConfiguration(), modelBuilder.Entity<Employee>());
             Configure(new CustomerConfiguration(), modelBuilder.Entity<Customer>());
             Configure(new ProductConfiguration(), modelBuilder.Entity<Product>());
+            Configure(new ProductDetailsConfiguration(), modelBuilder.Entity<ProductDetails>());
         }
 
-        protected void Configure<T>(IConfiguration<T> configuration, EntityTypeBuilder<T> builder) where T: BaseEntity
+        private void Configure<T>(IConfiguration<T> configuration, EntityTypeBuilder<T> builder) where T: BaseEntity
         {
             configuration.Configure(builder);
         }
