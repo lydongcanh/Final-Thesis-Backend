@@ -13,7 +13,8 @@ namespace FinalThesisBackend.Infrastructure.Configurations
             builder.Property(c => c.VipLevel).HasMaxLength(20);
             builder.Property(c => c.PhoneNumber).HasMaxLength(20);
             builder.Property(c => c.Email).HasMaxLength(50);
-            builder.HasOne(c => c.Account).WithOne(a => a.Customer).HasForeignKey<Customer>(c => c.AccountId);
+            builder.HasOne(c => c.Account).WithOne(a => a.Customer).HasForeignKey<Account>(a => a.CustomerId);
+            builder.HasOne(c => c.Cart).WithOne(c => c.Customer).HasForeignKey<Cart>(c => c.CustomerId);
         }
     }
 }

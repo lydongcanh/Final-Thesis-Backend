@@ -1,4 +1,6 @@
-﻿namespace FinalThesisBackend.Core.Entities
+﻿using System.Collections.Generic;
+
+namespace FinalThesisBackend.Core.Entities
 {
     public class ProductDetails : BaseEntity
     {
@@ -9,5 +11,7 @@
 
         public string ProductId { get; set; }
         public Product Product { get; set; }
+
+        public List<CartProductDetails> CartProductDetails { get; set; }
     }
 }
