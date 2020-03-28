@@ -2,7 +2,10 @@
 
 namespace FinalThesisBackend.Core.Entities
 {
-    public class CartProductDetails
+    /// <summary>
+    /// Cart - ProductDetails join entity.
+    /// </summary>
+    public class CartProductDetails : BaseEntity
     {
         public int Quantity { get; set; }
         public DateTime AddedDate { get; set; }
