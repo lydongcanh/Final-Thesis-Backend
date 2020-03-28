@@ -9,7 +9,7 @@ namespace FinalThesisBackend.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<CustomerCartItem> builder)
         {
             builder.Ignore(cci => cci.Id);
-            builder.HasKey(cci => cci.CustomerId);
+            builder.HasKey(cci => new { cci.CustomerId, cci.ProductDetailsId });
             builder.Property(cci => cci.Quantity).IsRequired();
             builder.Property(cci => cci.AddedDate).IsRequired();
             builder.HasOne(cci => cci.Customer).WithMany(c => c.CartItems).HasForeignKey(cci => cci.CustomerId);
