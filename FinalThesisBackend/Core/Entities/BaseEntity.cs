@@ -1,5 +1,4 @@
-﻿using System;
-namespace FinalThesisBackend.Core.Entities
+﻿namespace FinalThesisBackend.Core.Entities
 {
     public class BaseEntity
     {

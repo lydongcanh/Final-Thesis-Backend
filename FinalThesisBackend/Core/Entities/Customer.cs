@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FinalThesisBackend.Core.Entities
 {
@@ -16,7 +17,6 @@ namespace FinalThesisBackend.Core.Entities
         public string AccountId { get; set; }
         public Account Account { get; set; }
 
-        public string CartId { get; set; }
-        public Cart Cart { get; set; }
+        public List<CustomerCartItem> CartItems { get; set; }
     }
 }
