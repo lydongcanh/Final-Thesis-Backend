@@ -16,15 +16,15 @@ namespace FinalThesisBackend.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(
             [FromQuery]bool? showOnMainPage = null,
-            [FromQuery]string containsName = null
+            [FromQuery]string containsName = null)
         {
             if (showOnMainPage == null && containsName == null)
                 return Ok(await Repository.SelectAllAsync());
 
             return Ok(await Repository.SelectAsync(pc =>
             {
-                return (showOnMainPage == null && pc.ShowOnMainPage == showOnMainPage) &&
-                       (containsName == null && pc.Name.Contains(containsName));
+                return (showOnMainPage == null || pc.ShowOnMainPage == showOnMainPage) &&
+                       (containsName == null || pc.Name.Contains(containsName));
             }));
         }
     }
