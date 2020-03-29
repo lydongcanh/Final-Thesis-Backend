@@ -18,16 +18,16 @@ namespace FinalThesisBackend.Controllers
         public async Task<IActionResult> Get(
             [FromQuery]bool? showOnMainPage = null,
             [FromQuery]string productId = null,
-            [FromQuery]string collectionId = null)
+            [FromQuery]string productCollectionId = null)
         {
-            if (showOnMainPage == null && productId == null && collectionId == null)
+            if (showOnMainPage == null && productId == null && productCollectionId == null)
                 return Ok(await Repository.SelectAllAsync());
 
             return Ok(await Repository.SelectAsync(pcd =>
             {
                 return (showOnMainPage == null || pcd.ShowOnMainPage == showOnMainPage) &&
                        (productId == null || pcd.ProductId == productId) &&
-                       (collectionId == null || pcd.ProductCollectionId == collectionId);
+                       (productCollectionId == null || pcd.ProductCollectionId == productCollectionId);
             }));
         }
     }
