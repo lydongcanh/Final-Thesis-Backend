@@ -9,9 +9,9 @@ using FinalThesisBackend.Core.Interfaces;
 namespace FinalThesisBackend.Controllers
 {
     [Route("api/[controller]")]
-    public class ProductCollectionDetaisController : BaseController<ProductCollectionDetails>
+    public class ProductCollectionDetailsController : BaseController<ProductCollectionDetails>
     {
-        public ProductCollectionDetaisController(IAsyncRepository<ProductCollectionDetails> repository)
+        public ProductCollectionDetailsController(IAsyncRepository<ProductCollectionDetails> repository)
             : base(repository) { }
 
         [HttpGet]
