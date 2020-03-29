@@ -17,7 +17,8 @@ namespace FinalThesisBackend.Infrastructure.Configurations
                 i => JsonConvert.SerializeObject(i),
                 i => JsonConvert.DeserializeObject<string[]>(i));
             builder.HasOne(p => p.Category).WithMany(c => c.Products).HasForeignKey(p => p.CategoryId);
-            builder.HasMany(p => p.Details).WithOne(pd => pd.Product).HasForeignKey(pd => pd.ProductId);
+            builder.HasMany(p => p.ProductDetails).WithOne(pd => pd.Product).HasForeignKey(pd => pd.ProductId);
+            builder.HasMany(p => p.ProductCollectionDetails).WithOne(pcd => pcd.Product).HasForeignKey(pcd => pcd.ProductId);
         }
     }
 }

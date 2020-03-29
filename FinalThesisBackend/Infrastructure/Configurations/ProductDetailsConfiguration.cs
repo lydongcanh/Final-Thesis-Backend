@@ -13,7 +13,7 @@ namespace FinalThesisBackend.Infrastructure.Configurations
             builder.Property(pd => pd.Size).HasMaxLength(20).IsRequired();
             builder.Property(pd => pd.Color).HasMaxLength(20).IsRequired();
             builder.Property(pd => pd.Description).HasMaxLength(100);
-            builder.HasOne(pd => pd.Product).WithMany(p => p.Details).HasForeignKey(pd => pd.ProductId);
+            builder.HasOne(pd => pd.Product).WithMany(p => p.ProductDetails).HasForeignKey(pd => pd.ProductId);
             builder.HasMany(pd => pd.CartProductDetails).WithOne(cpd => cpd.ProductDetails).HasForeignKey(cpd => cpd.ProductDetailsId);
         }
     }

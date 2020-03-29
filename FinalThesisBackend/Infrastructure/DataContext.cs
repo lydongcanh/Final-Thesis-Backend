@@ -15,6 +15,8 @@ namespace FinalThesisBackend.Infrastructure
         public DbSet<Product> Products { get; private set; }
         public DbSet<ProductDetails> ProductDetails { get; private set; }
         public DbSet<CustomerCartItem> CustomerCartItems { get; private set; }
+        public DbSet<ProductCollection> ProductCollections { get; private set; }
+        public DbSet<ProductCollectionDetails> ProductCollectionDetails { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
@@ -27,6 +29,8 @@ namespace FinalThesisBackend.Infrastructure
             Configure(new ProductConfiguration(), modelBuilder.Entity<Product>());
             Configure(new ProductDetailsConfiguration(), modelBuilder.Entity<ProductDetails>());
             Configure(new CustomerCartItemConfiguration(), modelBuilder.Entity<CustomerCartItem>());
+            Configure(new ProductCollectionConfiguration(), modelBuilder.Entity<ProductCollection>());
+            Configure(new ProductCollectionDetailsConfiguration(), modelBuilder.Entity<ProductCollectionDetails>());
         }
 
         private void Configure<T>(IConfiguration<T> configuration, EntityTypeBuilder<T> builder) where T: class
