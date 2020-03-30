@@ -7,7 +7,7 @@ namespace FinalThesisBackend.Core.Entities
         public override string Id { get =>  ProductId + ProductCollectionId; }
 
         public bool ShowOnMainPage { get; set; }
-        public int Order { get; set; }
+        public int SortOrder { get; set; }
 
         public string ProductId { get; set; }
         public Product Product { get; set; }
