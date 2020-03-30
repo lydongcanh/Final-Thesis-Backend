@@ -20,5 +20,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Core\Interfaces\" />
     <Folder Include="Infrastructure\Configurations\" />
+    <Folder Include="Infrastructure\Repositories\" />
   </ItemGroup>
 </Project>

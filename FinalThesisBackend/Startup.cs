@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using FinalThesisBackend.Core.Entities;
 using FinalThesisBackend.Core.Interfaces;
 using FinalThesisBackend.Infrastructure;
+using FinalThesisBackend.Infrastructure.Repositories;
 
 namespace FinalThesisBackend
 {
@@ -44,6 +45,8 @@ namespace FinalThesisBackend
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LDCMacDockerConnection")));
 
+            services.AddScoped<IAsyncRepository<Account>, AccountRepository>();
+            services.AddScoped<IAsyncRepository<ProductCollection>, ProductCollectionRepository>();
             services.AddScoped(typeof(IAsyncRepository<>), typeof(DataAsyncRepository<>));
         }
 

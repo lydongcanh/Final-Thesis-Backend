@@ -10,13 +10,21 @@ namespace FinalThesisBackend.Infrastructure
 {
     public class DataAsyncRepository<T>: IAsyncRepository<T> where T : BaseEntity
     {
-        private readonly DataContext DataContext;
+        protected readonly DataContext DataContext;
 
-        private DbSet<T> Entities => DataContext.Set<T>();
+        protected virtual DbSet<T> Entities { get => DataContext.Set<T>(); }
 
         public DataAsyncRepository(DataContext dataContext)
         {
             DataContext = dataContext;
+        }
+
+        /// <summary>
+        /// Override this method if the entity has some property need to be included.
+        /// </summary>
+        protected virtual async Task<IEnumerable<T>> GetIncludedEntities()
+        {
+            return await Entities.ToListAsync();
         }
 
         public virtual async Task<T> SelectByIdAsync (string id)
@@ -24,18 +32,19 @@ namespace FinalThesisBackend.Infrastructure
             if (id == null)
                 throw new ArgumentNullException();
 
-            return await Entities.FirstOrDefaultAsync(e => e.Id == id);
+            var list = await GetIncludedEntities();
+            return list.FirstOrDefault(e => e.Id == id);
         }
 
         public virtual async Task<IEnumerable<T>> SelectAllAsync()
         {
-            return await Entities.ToListAsync();
+            return await GetIncludedEntities();
         }
 
         public virtual async Task<IEnumerable<T>> SelectAsync(Func<T, bool> predicate)
         {
-            var all = await Entities.ToListAsync();
-            return all.Where(predicate);
+            var list = await GetIncludedEntities();
+            return list.Where(predicate);
         }
 
         public virtual async Task<int> CountAsync()
@@ -45,10 +54,10 @@ namespace FinalThesisBackend.Infrastructure
 
         public virtual async Task<T> AddAsync(T entity)
         {
-            Entities.Add(entity);
+            var result = Entities.Add(entity);
             await DataContext.SaveChangesAsync();
 
-            return entity;
+            return result.Entity;
         }
 
         public virtual async Task<bool> UpdateAsync(T entity)
