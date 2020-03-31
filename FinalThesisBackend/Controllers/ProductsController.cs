@@ -32,5 +32,15 @@ namespace FinalThesisBackend.Controllers
                        (categoryId == null || p.CategoryId == categoryId);
             }));
         }
+
+        /// <summary>
+        /// POST api/[controller]
+        /// </summary>
+        [HttpPost]
+        public override async Task<IActionResult> Post([FromBody]Product entity)
+        {
+            entity.CreationDate = DateTime.Now;
+            return await base.Post(entity);
+        }
     }
 }

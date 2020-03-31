@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace FinalThesisBackend.Core.Entities
 {
@@ -6,8 +7,8 @@ namespace FinalThesisBackend.Core.Entities
     {
         public string Name { get; set; }
         public float UnitPrice { get; set; }
-        public int UnitsInStock { get; set; }
         public bool IsSelling { get; set; }
+        public DateTime CreationDate { get; set; }
         public string MainImage { get; set; }
         public string[] SubImages { get; set; }
 
