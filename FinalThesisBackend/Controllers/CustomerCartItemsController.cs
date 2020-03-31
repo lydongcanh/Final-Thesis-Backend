@@ -27,5 +27,12 @@ namespace FinalThesisBackend.Controllers
                        (productDetailsId == null || cci.ProductDetailsId == productDetailsId);
             }));
         }
+
+        [HttpPost]
+        public override async Task<IActionResult> Post([FromBody]CustomerCartItem cartItem)
+        {
+            cartItem.AddedDate = DateTime.Now;
+            return await base.Post(cartItem);
+        }
     }
 }
