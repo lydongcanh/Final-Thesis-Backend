@@ -21,5 +21,6 @@
     <Folder Include="Core\Interfaces\" />
     <Folder Include="Infrastructure\Configurations\" />
     <Folder Include="Infrastructure\Repositories\" />
+    <Folder Include="Core\ValueObjects\" />
   </ItemGroup>
 </Project>

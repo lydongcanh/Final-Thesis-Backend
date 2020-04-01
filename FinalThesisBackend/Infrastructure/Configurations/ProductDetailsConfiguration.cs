@@ -15,6 +15,7 @@ namespace FinalThesisBackend.Infrastructure.Configurations
             builder.Property(pd => pd.Description).HasMaxLength(100);
             builder.HasOne(pd => pd.Product).WithMany(p => p.ProductDetails).HasForeignKey(pd => pd.ProductId);
             builder.HasMany(pd => pd.CartProductDetails).WithOne(cpd => cpd.ProductDetails).HasForeignKey(cpd => cpd.ProductDetailsId);
+            builder.HasMany(pd => pd.CustomerOrderDetails).WithOne(cod => cod.ProductDetails).HasForeignKey(cod => cod.CustomerOrderId);
         }
     }
 }

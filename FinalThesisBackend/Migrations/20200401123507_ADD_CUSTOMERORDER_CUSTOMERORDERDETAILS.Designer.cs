@@ -4,14 +4,16 @@ using FinalThesisBackend.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalThesisBackend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200401123507_ADD_CUSTOMERORDER_CUSTOMERORDERDETAILS")]
+    partial class ADD_CUSTOMERORDER_CUSTOMERORDERDETAILS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -146,13 +148,13 @@ namespace FinalThesisBackend.Migrations
 
             modelBuilder.Entity("FinalThesisBackend.Core.Entities.CustomerOrderDetails", b =>
                 {
-                    b.Property<string>("ProductDetailsId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CustomerOrderId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Id")
+                    b.Property<string>("ProductDetailsId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("PurchasedPrice")
@@ -161,7 +163,7 @@ namespace FinalThesisBackend.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductDetailsId", "CustomerOrderId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CustomerOrderId");
 
@@ -285,7 +287,7 @@ namespace FinalThesisBackend.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2020, 4, 1, 19, 54, 13, 351, DateTimeKind.Local).AddTicks(5150));
+                        .HasDefaultValue(new DateTime(2020, 4, 1, 19, 35, 7, 296, DateTimeKind.Local).AddTicks(5550));
 
                     b.Property<int>("MainPageSortOrder")
                         .HasColumnType("int");
@@ -454,15 +456,11 @@ namespace FinalThesisBackend.Migrations
                 {
                     b.HasOne("FinalThesisBackend.Core.Entities.CustomerOrder", "CustomerOrder")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("CustomerOrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerOrderId");
 
                     b.HasOne("FinalThesisBackend.Core.Entities.ProductDetails", "ProductDetails")
                         .WithMany("CustomerOrderDetails")
-                        .HasForeignKey("CustomerOrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerOrderId");
                 });
 
             modelBuilder.Entity("FinalThesisBackend.Core.Entities.Employee", b =>

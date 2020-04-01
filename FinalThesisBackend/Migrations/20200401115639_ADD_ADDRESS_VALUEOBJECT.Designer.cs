@@ -4,14 +4,16 @@ using FinalThesisBackend.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalThesisBackend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200401115639_ADD_ADDRESS_VALUEOBJECT")]
+    partial class ADD_ADDRESS_VALUEOBJECT
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,53 +121,6 @@ namespace FinalThesisBackend.Migrations
                     b.HasIndex("ProductDetailsId");
 
                     b.ToTable("CustomerCartItems");
-                });
-
-            modelBuilder.Entity("FinalThesisBackend.Core.Entities.CustomerOrder", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("OrderState")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("CustomerOrders");
-                });
-
-            modelBuilder.Entity("FinalThesisBackend.Core.Entities.CustomerOrderDetails", b =>
-                {
-                    b.Property<string>("ProductDetailsId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CustomerOrderId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("PurchasedPrice")
-                        .HasColumnType("real");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductDetailsId", "CustomerOrderId");
-
-                    b.HasIndex("CustomerOrderId");
-
-                    b.ToTable("CustomerOrderDetails");
                 });
 
             modelBuilder.Entity("FinalThesisBackend.Core.Entities.Employee", b =>
@@ -285,7 +240,7 @@ namespace FinalThesisBackend.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2020, 4, 1, 19, 54, 13, 351, DateTimeKind.Local).AddTicks(5150));
+                        .HasDefaultValue(new DateTime(2020, 4, 1, 18, 56, 38, 581, DateTimeKind.Local).AddTicks(2220));
 
                     b.Property<int>("MainPageSortOrder")
                         .HasColumnType("int");
@@ -410,57 +365,6 @@ namespace FinalThesisBackend.Migrations
                     b.HasOne("FinalThesisBackend.Core.Entities.ProductDetails", "ProductDetails")
                         .WithMany("CartProductDetails")
                         .HasForeignKey("ProductDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("FinalThesisBackend.Core.Entities.CustomerOrder", b =>
-                {
-                    b.HasOne("FinalThesisBackend.Core.Entities.Customer", "Customer")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerId");
-
-                    b.OwnsOne("FinalThesisBackend.Core.ValueObjects.Address", "ShipAddress", b1 =>
-                        {
-                            b1.Property<string>("CustomerOrderId")
-                                .HasColumnType("nvarchar(450)");
-
-                            b1.Property<string>("City")
-                                .HasColumnType("nvarchar(50)")
-                                .HasMaxLength(50);
-
-                            b1.Property<string>("District")
-                                .HasColumnType("nvarchar(50)")
-                                .HasMaxLength(50);
-
-                            b1.Property<string>("Number")
-                                .HasColumnType("nvarchar(50)")
-                                .HasMaxLength(50);
-
-                            b1.Property<string>("Street")
-                                .HasColumnType("nvarchar(50)")
-                                .HasMaxLength(50);
-
-                            b1.HasKey("CustomerOrderId");
-
-                            b1.ToTable("CustomerOrders");
-
-                            b1.WithOwner()
-                                .HasForeignKey("CustomerOrderId");
-                        });
-                });
-
-            modelBuilder.Entity("FinalThesisBackend.Core.Entities.CustomerOrderDetails", b =>
-                {
-                    b.HasOne("FinalThesisBackend.Core.Entities.CustomerOrder", "CustomerOrder")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("CustomerOrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FinalThesisBackend.Core.Entities.ProductDetails", "ProductDetails")
-                        .WithMany("CustomerOrderDetails")
-                        .HasForeignKey("CustomerOrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
