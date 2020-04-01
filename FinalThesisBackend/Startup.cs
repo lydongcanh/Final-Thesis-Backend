@@ -46,6 +46,7 @@ namespace FinalThesisBackend
                 options.UseSqlServer(Configuration.GetConnectionString("LDCMacDockerConnection")));
 
             services.AddScoped<IAsyncRepository<Account>, AccountRepository>();
+            services.AddScoped<IAsyncRepository<CustomerCartItem>, CustomerCartItemsRepository>();
             services.AddScoped<IAsyncRepository<ProductCollection>, ProductCollectionRepository>();
             services.AddScoped(typeof(IAsyncRepository<>), typeof(DataAsyncRepository<>));
         }
