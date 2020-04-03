@@ -15,6 +15,7 @@ namespace FinalThesisBackend.Infrastructure.Repositories
         {
             return await Entities
                 .Include(a => a.Customer)
+                    .ThenInclude(c => c.Address)
                     //.ThenInclude(c => c.CartItems)
                     //    .ThenInclude(ci => ci.ProductDetails)
                     //        .ThenInclude(pd => pd.Product)
