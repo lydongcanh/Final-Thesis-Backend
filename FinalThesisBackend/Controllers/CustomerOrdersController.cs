@@ -6,6 +6,7 @@ using FinalThesisBackend.Core.Interfaces;
 
 namespace FinalThesisBackend.Controllers
 {
+    [Route("api/[controller]")]
     public class CustomerOrdersController : BaseController<CustomerOrder>
     {
         public CustomerOrdersController(IAsyncRepository<CustomerOrder> repository) : base(repository) { }
