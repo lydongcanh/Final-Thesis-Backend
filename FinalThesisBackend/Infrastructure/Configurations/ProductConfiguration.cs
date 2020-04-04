@@ -19,6 +19,7 @@ namespace FinalThesisBackend.Infrastructure.Configurations
             builder.HasOne(p => p.Category).WithMany(c => c.Products).HasForeignKey(p => p.CategoryId);
             builder.HasMany(p => p.ProductDetails).WithOne(pd => pd.Product).HasForeignKey(pd => pd.ProductId);
             builder.HasMany(p => p.ProductCollectionDetails).WithOne(pcd => pcd.Product).HasForeignKey(pcd => pcd.ProductId);
+            builder.HasMany(p => p.CustomerProductDetails).WithOne(cpd => cpd.Product).HasForeignKey(cpd => cpd.ProductId);
         }
     }
 }

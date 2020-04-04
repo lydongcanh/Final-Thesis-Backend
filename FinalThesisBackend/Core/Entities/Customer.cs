@@ -20,5 +20,6 @@ namespace FinalThesisBackend.Core.Entities
 
         public List<CustomerCartItem> CartItems { get; set; }
         public List<CustomerOrder> Orders { get; set; }
+        public List<CustomerProductDetails> CustomerProductDetails { get; set; }
     }
 }

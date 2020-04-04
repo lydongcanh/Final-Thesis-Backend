@@ -21,6 +21,7 @@ namespace FinalThesisBackend.Infrastructure.Configurations
             });
             builder.HasOne(c => c.Account).WithOne(a => a.Customer).HasForeignKey<Account>(a => a.CustomerId);
             builder.HasMany(c => c.CartItems).WithOne(ci => ci.Customer).HasForeignKey(ci => ci.CustomerId);
+            builder.HasMany(c => c.CustomerProductDetails).WithOne(cpd => cpd.Customer).HasForeignKey(cpd => cpd.CustomerId);
         }
     }
 }

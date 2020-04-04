@@ -13,6 +13,7 @@ namespace FinalThesisBackend.Infrastructure
         public DbSet<CustomerCartItem> CustomerCartItems { get; private set; }
         public DbSet<CustomerOrder> CustomerOrders { get; set; }
         public DbSet<CustomerOrderDetails> CustomerOrderDetails { get; set; }
+        public DbSet<CustomerProductDetails> CustomerProductDetails { get; private set; }
         public DbSet<Employee> Employees { get; private set; }
         public DbSet<Product> Products { get; private set; }
         public DbSet<ProductCategory> Categories { get; private set; }
@@ -29,6 +30,7 @@ namespace FinalThesisBackend.Infrastructure
             Configure(new CustomerCartItemConfiguration(), modelBuilder.Entity<CustomerCartItem>());
             Configure(new CustomerOrderConfiguration(), modelBuilder.Entity<CustomerOrder>());
             Configure(new CustomerOrderDetailsConfiguration(), modelBuilder.Entity<CustomerOrderDetails>());
+            Configure(new CustomerProductDetailsConfiguration(), modelBuilder.Entity<CustomerProductDetails>());
             Configure(new EmployeeConfiguration(), modelBuilder.Entity<Employee>());
             Configure(new ProductConfiguration(), modelBuilder.Entity<Product>());
             Configure(new ProductCategoryConfiguration(), modelBuilder.Entity<ProductCategory>());

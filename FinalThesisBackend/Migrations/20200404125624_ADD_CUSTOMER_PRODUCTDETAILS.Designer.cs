@@ -4,14 +4,16 @@ using FinalThesisBackend.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FinalThesisBackend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200404125624_ADD_CUSTOMER_PRODUCTDETAILS")]
+    partial class ADD_CUSTOMER_PRODUCTDETAILS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,6 +178,9 @@ namespace FinalThesisBackend.Migrations
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("Liked")
                         .HasColumnType("bit");
 
@@ -309,7 +314,7 @@ namespace FinalThesisBackend.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2020, 4, 4, 19, 59, 31, 566, DateTimeKind.Local).AddTicks(7750));
+                        .HasDefaultValue(new DateTime(2020, 4, 4, 19, 56, 23, 801, DateTimeKind.Local).AddTicks(2770));
 
                     b.Property<int>("MainPageSortOrder")
                         .HasColumnType("int");
