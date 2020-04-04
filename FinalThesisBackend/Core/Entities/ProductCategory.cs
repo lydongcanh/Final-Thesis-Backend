@@ -8,7 +8,7 @@ namespace FinalThesisBackend.Core.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImagePath { get; set; }
-
+        public int SortOrder { get; set; }
         public string ParentCategoryId { get; set; }
         public ProductCategory ParentCategory { get; set; }
 
