@@ -49,6 +49,7 @@ namespace FinalThesisBackend
             services.AddScoped<IAsyncRepository<CustomerCartItem>, CustomerCartItemsRepository>();
             services.AddScoped<IAsyncRepository<ProductCollection>, ProductCollectionRepository>();
             services.AddScoped<IAsyncRepository<CustomerOrder>, CustomerOrderRepository>();
+            services.AddScoped<IAsyncRepository<CustomerProductDetails>, CustomerProductDetailsRepository>();
             services.AddScoped(typeof(IAsyncRepository<>), typeof(DataAsyncRepository<>));
         }
 
