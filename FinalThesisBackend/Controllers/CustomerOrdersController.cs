@@ -14,15 +14,19 @@ namespace FinalThesisBackend.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(
             [FromQuery]string orderState = null,
-            [FromQuery]string customerId = null)
+            [FromQuery]string customerId = null,
+            [FromQuery]DateTime? fromDate = null,
+            [FromQuery]DateTime? toDate = null)
         {
-            if (orderState == null && customerId == null)
+            if (orderState == null && customerId == null && fromDate == null && toDate == null)
                 return Ok(await Repository.SelectAllAsync());
 
             return Ok(await Repository.SelectAsync(co =>
             {
                 return (orderState == null || co.OrderState == orderState) &&
-                       (customerId == null || co.CustomerId == customerId);
+                       (customerId == null || co.CustomerId == customerId) &&
+                       (fromDate == null || co.CreationDate.Date.CompareTo(fromDate.Value.Date) >= 0) &&
+                       (toDate == null || co.CreationDate.Date.CompareTo(toDate.Value.Date) <= 0);
             }));
         }
 
