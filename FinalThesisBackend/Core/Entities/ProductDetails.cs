@@ -6,7 +6,7 @@ namespace FinalThesisBackend.Core.Entities
     {
         public string Size { get; set; }
         public string Color { get; set; }
-        public string Description { get; set; }
+        public string Description { get; set; } // Remove this
         public int UnitsInStock { get; set; }
 
         public string ProductId { get; set; }

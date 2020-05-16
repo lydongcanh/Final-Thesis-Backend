@@ -20,6 +20,7 @@ namespace FinalThesisBackend.Infrastructure
         public DbSet<ProductCollection> ProductCollections { get; private set; }
         public DbSet<ProductCollectionDetails> ProductCollectionDetails { get; set; }
         public DbSet<ProductDetails> ProductDetails { get; private set; }
+        //public DbSet<ProductDiscount> ProductDiscounts { get; private set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
