@@ -11,7 +11,12 @@ namespace FinalThesisBackend.Infrastructure.Repositories
 
         protected override async Task<IEnumerable<CustomerOrder>> GetIncludedEntities()
         {
-            return await Entities.Include(co => co.OrderDetails).ToListAsync();
+            return await Entities
+                .Include(co => co.OrderDetails)
+                        //.ThenInclude(od => od.ProductDetails)
+                            //.ThenInclude(pd => pd.Product)
+                //.Include(co => co.Customer)
+                .ToListAsync();
         }
     }
 }

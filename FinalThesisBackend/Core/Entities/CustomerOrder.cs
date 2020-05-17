@@ -9,7 +9,7 @@ namespace FinalThesisBackend.Core.Entities
         public string OrderState { get; set; }
         public Address ShipAddress { get; set; }
         public DateTime CreationDate { get; set; }
-
+        public string Description { get; set; }
         public string CustomerId { get; set; }
         public Customer Customer { get; set; }
 
