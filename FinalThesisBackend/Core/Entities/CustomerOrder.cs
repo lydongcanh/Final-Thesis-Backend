@@ -14,5 +14,6 @@ namespace FinalThesisBackend.Core.Entities
         public Customer Customer { get; set; }
 
         public List<CustomerOrderDetails> OrderDetails { get; set; }
+        public List<CustomerOrderStateDetails> StateDetails { get; set; }
     }
 }

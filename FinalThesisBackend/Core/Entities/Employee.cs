@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FinalThesisBackend.Core.ValueObjects;
 
 namespace FinalThesisBackend.Core.Entities
@@ -16,5 +17,7 @@ namespace FinalThesisBackend.Core.Entities
 
         public string AccountId { get; set; }
         public Account Account { get; set; }
+
+        public List<CustomerOrderStateDetails> OrderStateDetails { get; set; }
     }
 }

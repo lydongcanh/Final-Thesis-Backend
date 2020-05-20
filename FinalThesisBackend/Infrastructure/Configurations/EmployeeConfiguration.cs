@@ -21,6 +21,7 @@ namespace FinalThesisBackend.Infrastructure.Configurations
                 address.Property(a => a.City).HasMaxLength(50);
             });
             builder.HasOne(e => e.Account).WithOne(a => a.Employee).HasForeignKey<Account>(a => a.EmployeeId);
+            builder.HasMany(e => e.OrderStateDetails).WithOne(cosd => cosd.Employee).HasForeignKey(cosd => cosd.EmployeeId);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace FinalThesisBackend.Infrastructure
         public DbSet<CustomerCartItem> CustomerCartItems { get; private set; }
         public DbSet<CustomerOrder> CustomerOrders { get; set; }
         public DbSet<CustomerOrderDetails> CustomerOrderDetails { get; set; }
+        public DbSet<CustomerOrderStateDetails> CustomerOrderStateDetails { get; set; }
         public DbSet<CustomerProductDetails> CustomerProductDetails { get; private set; }
         public DbSet<Employee> Employees { get; private set; }
         public DbSet<Product> Products { get; private set; }
@@ -21,7 +22,7 @@ namespace FinalThesisBackend.Infrastructure
         public DbSet<ProductCollectionDetails> ProductCollectionDetails { get; set; }
         public DbSet<ProductDetails> ProductDetails { get; private set; }
         //public DbSet<ProductDiscount> ProductDiscounts { get; private set; }
-
+        
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,6 +32,7 @@ namespace FinalThesisBackend.Infrastructure
             Configure(new CustomerCartItemConfiguration(), modelBuilder.Entity<CustomerCartItem>());
             Configure(new CustomerOrderConfiguration(), modelBuilder.Entity<CustomerOrder>());
             Configure(new CustomerOrderDetailsConfiguration(), modelBuilder.Entity<CustomerOrderDetails>());
+            Configure(new CustomerOrderStateDetailsConfiguration(), modelBuilder.Entity<CustomerOrderStateDetails>());
             Configure(new CustomerProductDetailsConfiguration(), modelBuilder.Entity<CustomerProductDetails>());
             Configure(new EmployeeConfiguration(), modelBuilder.Entity<Employee>());
             Configure(new ProductConfiguration(), modelBuilder.Entity<Product>());
