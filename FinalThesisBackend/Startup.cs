@@ -53,6 +53,7 @@ namespace FinalThesisBackend
             services.AddScoped<IAsyncRepository<Product>, ProductRepository>();
             services.AddScoped<IAsyncRepository<Customer>, CustomerRepository>();
             services.AddScoped<IAsyncRepository<Employee>, EmployeeRepository>();
+            services.AddScoped<IAsyncRepository<CustomerOrderDetails>, CustomerOrderDetailsRepository>();
             services.AddScoped(typeof(IAsyncRepository<>), typeof(DataAsyncRepository<>));
         }
 
