@@ -25,5 +25,12 @@ namespace FinalThesisBackend.Controllers
                        (employeeId == null || cod.EmployeeId == employeeId);
             }));
         }
+
+        [HttpPost]
+        public override async Task<IActionResult> Post([FromBody]CustomerOrderStateDetails details)
+        {
+            details.CreationDate = DateTime.Now;
+            return await base.Post(details);
+        }
     }
 }

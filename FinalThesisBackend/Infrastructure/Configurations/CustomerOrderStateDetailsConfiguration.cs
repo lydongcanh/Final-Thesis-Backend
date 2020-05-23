@@ -9,7 +9,7 @@ namespace FinalThesisBackend.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<CustomerOrderStateDetails> builder)
         {
-            builder.HasKey(cosd => new { cosd.CustomerOrderId, cosd.EmployeeId, cosd.OrderState });
+            builder.HasKey(cosd => new { cosd.CustomerOrderId, cosd.OrderState });
             builder.Ignore(cosd => cosd.Id);
             builder.Property(cosd => cosd.OrderState).HasMaxLength(50).IsRequired();
             builder.Property(cosd => cosd.Description).HasMaxLength(200);

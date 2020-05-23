@@ -9,7 +9,14 @@ namespace FinalThesisBackend.Controllers
     [Route("api/[controller]")]
     public class CustomerOrdersController : BaseController<CustomerOrder>
     {
-        public CustomerOrdersController(IAsyncRepository<CustomerOrder> repository) : base(repository) { }
+        private IAsyncRepository<CustomerOrderStateDetails> stateRepository;
+
+        public CustomerOrdersController(
+            IAsyncRepository<CustomerOrder> repository,
+            IAsyncRepository<CustomerOrderStateDetails> stateRepository) : base(repository)
+        {
+            this.stateRepository = stateRepository;
+        }
 
         [HttpGet]
         public async Task<IActionResult> Get(
