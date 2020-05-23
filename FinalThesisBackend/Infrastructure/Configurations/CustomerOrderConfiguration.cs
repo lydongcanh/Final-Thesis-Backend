@@ -9,7 +9,6 @@ namespace FinalThesisBackend.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<CustomerOrder> builder)
         {
             builder.Property(co => co.OrderState).HasMaxLength(50).IsRequired();
-            builder.Property(co => co.Description).HasMaxLength(200);
             builder.OwnsOne(co => co.ShipAddress, address =>
             {
                 address.Property(a => a.Number).HasMaxLength(50);
