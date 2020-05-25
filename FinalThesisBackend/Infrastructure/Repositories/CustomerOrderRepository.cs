@@ -13,7 +13,7 @@ namespace FinalThesisBackend.Infrastructure.Repositories
         {
             return await Entities
                 .Include(co => co.OrderDetails)
-                        //.ThenInclude(od => od.ProductDetails)
+                        .ThenInclude(od => od.ProductDetails)
                             //.ThenInclude(pd => pd.Product)
                 //.Include(co => co.Customer)
                 .ToListAsync();
