@@ -18,18 +18,23 @@ namespace FinalThesisBackend.Controllers
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> Get(
-            [FromQuery]string username,
-            [FromQuery]string password,
-            [FromQuery]string type,
-            [FromQuery]bool? isActive)
+            [FromQuery]string username = null,
+            [FromQuery]string password = null,
+            [FromQuery]string type = null,
+            [FromQuery]bool? isActive = null,
+            [FromQuery]string customerId = null,
+            [FromQuery]string employeeId = null)
         {
-            if (username == null && type == null && isActive == null)
+            if (username == null && password == null && type == null && isActive == null &&
+                customerId == null && employeeId == null)
                 return Ok(await Repository.SelectAllAsync());
 
             return Ok(await Repository.SelectAsync(a =>
             {
                 return (username == null || a.Username == username) &&
                        (password == null || a.Password == password) &&
+                       (customerId == null || a.CustomerId == customerId) &&
+                       (employeeId == null || a.EmployeeId == employeeId) &&
                        (type == null || a.AccountType == type) &&
                        (isActive == null || a.IsActive == isActive);
             }));
