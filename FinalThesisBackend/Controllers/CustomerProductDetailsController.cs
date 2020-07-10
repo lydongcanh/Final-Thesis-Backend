@@ -15,16 +15,18 @@ namespace FinalThesisBackend.Controllers
         public async Task<IActionResult> Get(
             [FromQuery]string customerId = null,
             [FromQuery]string productId = null,
-            [FromQuery]bool? liked = null)
+            [FromQuery]bool? liked = null,
+            [FromQuery]bool? rated = null)
         {
-            if (customerId == null && productId == null && liked == null)
+            if (customerId == null && productId == null && liked == null && rated == null)
                 return Ok(await Repository.SelectAllAsync());
 
             return Ok(await Repository.SelectAsync(cpd =>
             {
                 return (customerId == null || cpd.CustomerId == customerId) &&
                        (productId == null || cpd.ProductId == productId) &&
-                       (liked == null || cpd.Liked == liked);
+                       (liked == null || cpd.Liked == liked) &&
+                       (rated == null || cpd.Rate > 0);
             }));
         }
     }

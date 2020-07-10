@@ -15,7 +15,7 @@ namespace FinalThesisBackend.Infrastructure.Repositories
         {
             return await Entities
                 //.Include(c => c.Orders)
-                //.Include(c => c.Account)
+                .Include(c => c.Account)
                 .ToListAsync();
         }
     }
