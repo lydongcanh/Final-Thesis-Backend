@@ -8,7 +8,7 @@ namespace FinalThesisBackend.Core.Entities
 
         public int Rate { get; set; }
         public bool Liked { get; set; }
-
+        public string Comment { get; set; }
         public string CustomerId { get; set; }
         public Customer Customer { get; set; }
 

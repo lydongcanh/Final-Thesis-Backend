@@ -18,11 +18,11 @@ namespace FinalThesisBackend.Infrastructure.Repositories
                     .ThenInclude(c => c.Address)
                 .Include(a => a.Customer)
                     .ThenInclude(c => c.CustomerProductDetails)
-                        .ThenInclude(cpd => cpd.Product)
-                .Include(a => a.Customer)
-                    .ThenInclude(c => c.CartItems)
-                        .ThenInclude(ci => ci.ProductDetails)
-                            .ThenInclude(pd => pd.Product)
+                        //.ThenInclude(cpd => cpd.Product)
+                //.Include(a => a.Customer)
+                    //.ThenInclude(c => c.CartItems)
+                        //.ThenInclude(ci => ci.ProductDetails)
+                            //.ThenInclude(pd => pd.Product)
                 .Include(a => a.Employee)
                 .ToListAsync();
         }

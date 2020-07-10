@@ -27,7 +27,7 @@ namespace FinalThesisBackend.Controllers
 
             return Ok(await Repository.SelectAsync(p =>
             {
-                return (containsName == null || p.Name.Contains(containsName)) &&
+                return (containsName == null || p.Name.ToLower().Contains(containsName.ToLower())) &&
                        (isSelling == null || p.IsSelling == isSelling) &&
                        (categoryId == null || p.CategoryId == categoryId);
             }));
