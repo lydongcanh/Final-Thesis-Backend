@@ -20,16 +20,18 @@ namespace FinalThesisBackend.Controllers
         public async Task<IActionResult> Get(
             [FromQuery]string containsName = null,
             [FromQuery]bool? isSelling = null,
-            [FromQuery]string categoryId = null)
+            [FromQuery]string categoryId = null,
+            [FromQuery]bool? isDiscount = null)
         {
-            if (containsName == null && isSelling == null && categoryId == null)
+            if (containsName == null && isSelling == null && categoryId == null && isDiscount == null)
                 return Ok(await Repository.SelectAllAsync());
 
             return Ok(await Repository.SelectAsync(p =>
             {
                 return (containsName == null || p.Name.ToLower().Contains(containsName.ToLower())) &&
                        (isSelling == null || p.IsSelling == isSelling) &&
-                       (categoryId == null || p.CategoryId == categoryId);
+                       (categoryId == null || p.CategoryId == categoryId) &&
+                       (isDiscount == null || p.IsDiscount == isDiscount);
             }));
         }
 

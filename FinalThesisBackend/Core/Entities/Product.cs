@@ -7,6 +7,8 @@ namespace FinalThesisBackend.Core.Entities
     {
         public string Name { get; set; }
         public float UnitPrice { get; set; }
+        public bool IsDiscount { get; set; }
+        public float DiscountAmount { get; set; }
         public bool IsSelling { get; set; }
         public DateTime CreationDate { get; set; }
         public string MainImage { get; set; }

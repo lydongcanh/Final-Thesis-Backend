@@ -12,6 +12,8 @@ namespace FinalThesisBackend.Infrastructure.Configurations
             builder.Property(p => p.Name).HasMaxLength(100).IsRequired();
             builder.Property(p => p.UnitPrice).IsRequired();
             builder.Property(p => p.MainImage).IsRequired();
+            builder.Property(p => p.IsDiscount).HasDefaultValue(false);
+            builder.Property(p => p.DiscountAmount).HasDefaultValue(0);
             builder.Property(p => p.SubImages).HasConversion(
                 i => JsonConvert.SerializeObject(i),
                 i => JsonConvert.DeserializeObject<string[]>(i));
